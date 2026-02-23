@@ -1,0 +1,41 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <div class="card-header-content">
+        <mat-icon class="login-icon">work</mat-icon>
+        <mat-card-title>FCT Manager</mat-card-title>
+        <mat-card-subtitle>Gestió de Formació en Centres de Treball</mat-card-subtitle>
+      </div>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Usuari</mat-label>
+          <input matInput formControlName="username" placeholder="Introdueix l'usuari">
+          <mat-icon matSuffix>person</mat-icon>
+          <mat-error *ngIf="form.get('username')?.hasError('required')">
+            L'usuari és obligatori
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Contrasenya</mat-label>
+          <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+          <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="form.get('password')?.hasError('required')">
+            La contrasenya és obligatòria
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit"
+                class="full-width submit-btn" [disabled]="loading">
+          <mat-spinner diameter="20" *ngIf="loading"></mat-spinner>
+          <span *ngIf="!loading">Iniciar sessió</span>
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

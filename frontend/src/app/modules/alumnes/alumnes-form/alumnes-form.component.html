@@ -1,0 +1,62 @@
+<h2 mat-dialog-title>{{ isEdit ? 'Editar Alumne' : 'Nou Alumne' }}</h2>
+<mat-dialog-content>
+  <form [formGroup]="form" class="dialog-form">
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Nom</mat-label>
+        <input matInput formControlName="nom">
+        <mat-error *ngIf="form.get('nom')?.hasError('required')">Obligatori</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Cognoms</mat-label>
+        <input matInput formControlName="cognom">
+        <mat-error *ngIf="form.get('cognom')?.hasError('required')">Obligatori</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>DNI</mat-label>
+        <input matInput formControlName="dni">
+        <mat-error *ngIf="form.get('dni')?.hasError('required')">Obligatori</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email">
+        <mat-error *ngIf="form.get('email')?.hasError('required')">Obligatori</mat-error>
+        <mat-error *ngIf="form.get('email')?.hasError('email')">Email invàlid</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Telèfon</mat-label>
+        <input matInput formControlName="telefon">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Població</mat-label>
+        <input matInput formControlName="poblacio">
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Curs Escolar</mat-label>
+        <input matInput formControlName="cursEscolar" placeholder="ex: 2024-2025">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Cicle Formatiu</mat-label>
+        <mat-select formControlName="cicleId">
+          <mat-option *ngFor="let c of cicles" [value]="c.id">{{ c.nom }} ({{ c.grau }})</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('cicleId')?.hasError('required')">Obligatori</mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel·lar</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="form.invalid">
+    {{ isEdit ? 'Actualitzar' : 'Crear' }}
+  </button>
+</mat-dialog-actions>

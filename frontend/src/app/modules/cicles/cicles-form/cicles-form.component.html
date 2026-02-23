@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>{{ isEdit ? 'Editar Cicle' : 'Nou Cicle' }}</h2>
+<mat-dialog-content>
+  <form [formGroup]="form" class="dialog-form">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nom</mat-label>
+      <input matInput formControlName="nom" placeholder="Nom del cicle">
+      <mat-error *ngIf="form.get('nom')?.hasError('required')">El nom és obligatori</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Grau</mat-label>
+      <mat-select formControlName="grau">
+        <mat-option *ngFor="let g of graus" [value]="g">{{ g }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('grau')?.hasError('required')">El grau és obligatori</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Família Professional</mat-label>
+      <input matInput formControlName="familiaProfessional" placeholder="Família professional">
+      <mat-error *ngIf="form.get('familiaProfessional')?.hasError('required')">La família és obligatòria</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Codi</mat-label>
+      <input matInput formControlName="codi" placeholder="Codi del cicle">
+      <mat-error *ngIf="form.get('codi')?.hasError('required')">El codi és obligatori</mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel·lar</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="form.invalid">
+    {{ isEdit ? 'Actualitzar' : 'Crear' }}
+  </button>
+</mat-dialog-actions>

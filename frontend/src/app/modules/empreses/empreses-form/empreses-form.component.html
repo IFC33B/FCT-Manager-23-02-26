@@ -1,0 +1,66 @@
+<h2 mat-dialog-title>{{ isEdit ? 'Editar Empresa' : 'Nova Empresa' }}</h2>
+<mat-dialog-content>
+  <form [formGroup]="form" class="dialog-form">
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="two-thirds-width">
+        <mat-label>Nom</mat-label>
+        <input matInput formControlName="nom">
+        <mat-error *ngIf="form.get('nom')?.hasError('required')">Obligatori</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="third-width">
+        <mat-label>CIF</mat-label>
+        <input matInput formControlName="cif">
+        <mat-error *ngIf="form.get('cif')?.hasError('required')">Obligatori</mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Adreça</mat-label>
+      <input matInput formControlName="direccio">
+    </mat-form-field>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Població</mat-label>
+        <input matInput formControlName="poblacio">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="quarter-width">
+        <mat-label>Codi Postal</mat-label>
+        <input matInput formControlName="codiPostal">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="quarter-width">
+        <mat-label>Província</mat-label>
+        <input matInput formControlName="provincia">
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Telèfon</mat-label>
+        <input matInput formControlName="telefon">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email">
+        <mat-error *ngIf="form.get('email')?.hasError('email')">Email invàlid</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Web</mat-label>
+        <input matInput formControlName="web">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Sector d'Activitat</mat-label>
+        <input matInput formControlName="sectorActivitat">
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel·lar</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="form.invalid">
+    {{ isEdit ? 'Actualitzar' : 'Crear' }}
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,57 @@
+<h2 mat-dialog-title>{{ isEdit ? 'Editar Tutor' : 'Nou Tutor' }}</h2>
+<mat-dialog-content>
+  <form [formGroup]="form" class="dialog-form">
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Nom</mat-label>
+        <input matInput formControlName="nom">
+        <mat-error *ngIf="form.get('nom')?.hasError('required')">Obligatori</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Cognoms</mat-label>
+        <input matInput formControlName="cognom">
+        <mat-error *ngIf="form.get('cognom')?.hasError('required')">Obligatori</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email">
+        <mat-error *ngIf="form.get('email')?.hasError('required')">Obligatori</mat-error>
+        <mat-error *ngIf="form.get('email')?.hasError('email')">Email invàlid</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Telèfon</mat-label>
+        <input matInput formControlName="telefon">
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Càrrec</mat-label>
+        <input matInput formControlName="carrec">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Tipus</mat-label>
+        <mat-select formControlName="tipus">
+          <mat-option *ngFor="let t of tipusList" [value]="t">{{ t }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('tipus')?.hasError('required')">Obligatori</mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" class="full-width" *ngIf="form.get('tipus')?.value === 'EMPRESA'">
+      <mat-label>Empresa</mat-label>
+      <mat-select formControlName="empresaId">
+        <mat-option *ngFor="let e of empreses" [value]="e.id">{{ e.nom }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel·lar</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="form.invalid">
+    {{ isEdit ? 'Actualitzar' : 'Crear' }}
+  </button>
+</mat-dialog-actions>

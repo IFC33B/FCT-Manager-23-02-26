@@ -1,0 +1,81 @@
+<h2 mat-dialog-title>{{ isEdit ? 'Editar Conveni' : 'Nou Conveni' }}</h2>
+<mat-dialog-content>
+  <form [formGroup]="form" class="dialog-form">
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Alumne</mat-label>
+        <mat-select formControlName="alumneId">
+          <mat-option *ngFor="let a of alumnes" [value]="a.id">{{ a.nom }} {{ a.cognom }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('alumneId')?.hasError('required')">Obligatori</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Empresa</mat-label>
+        <mat-select formControlName="empresaId">
+          <mat-option *ngFor="let e of empreses" [value]="e.id">{{ e.nom }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('empresaId')?.hasError('required')">Obligatori</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Tutor d'Empresa</mat-label>
+        <mat-select formControlName="tutorEmpresaId">
+          <mat-option *ngFor="let t of tutorsEmpresa" [value]="t.id">{{ t.nom }} {{ t.cognom }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('tutorEmpresaId')?.hasError('required')">Obligatori</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Tutor de Centre</mat-label>
+        <mat-select formControlName="tutorCentreId">
+          <mat-option *ngFor="let t of tutorsCentre" [value]="t.id">{{ t.nom }} {{ t.cognom }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('tutorCentreId')?.hasError('required')">Obligatori</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Data Inici</mat-label>
+        <input matInput [matDatepicker]="pickerInici" formControlName="dataInici">
+        <mat-datepicker-toggle matSuffix [for]="pickerInici"></mat-datepicker-toggle>
+        <mat-datepicker #pickerInici></mat-datepicker>
+        <mat-error *ngIf="form.get('dataInici')?.hasError('required')">Obligatori</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Data Fi</mat-label>
+        <input matInput [matDatepicker]="pickerFi" formControlName="dataFi">
+        <mat-datepicker-toggle matSuffix [for]="pickerFi"></mat-datepicker-toggle>
+        <mat-datepicker #pickerFi></mat-datepicker>
+        <mat-error *ngIf="form.get('dataFi')?.hasError('required')">Obligatori</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Hores Totals</mat-label>
+        <input matInput formControlName="horesTotals" type="number">
+        <mat-error *ngIf="form.get('horesTotals')?.hasError('required')">Obligatori</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Estat</mat-label>
+        <mat-select formControlName="estat">
+          <mat-option *ngFor="let e of estatsList" [value]="e">{{ e }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('estat')?.hasError('required')">Obligatori</mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Observacions</mat-label>
+      <textarea matInput formControlName="observacions" rows="3"></textarea>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel·lar</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="form.invalid">
+    {{ isEdit ? 'Actualitzar' : 'Crear' }}
+  </button>
+</mat-dialog-actions>
