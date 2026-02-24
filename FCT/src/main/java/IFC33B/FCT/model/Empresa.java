@@ -1,50 +1,56 @@
-package IFC33B.FCT.Model;
+package IFC33B.FCT.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "tutors")
+@Table(name = "empreses")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Tutor {
+public class Empresa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Column(nullable = false)
-    private String nombre;
+    private String nom;
 
     @Column(nullable = false)
-    private String cognom;
+    private String cif;
+
+    @Column(nullable = false)
+    private String poblacio;
+
+    @Column(nullable = false)
+    private int telefon;
 
     @Column(nullable = false)
     private String email;
 
     @Column(nullable = false)
-    private String telefon;
+    private String direccio;
 
     @Column(nullable = false)
-    private String carreg;
+    private String codiPostal;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private TipusTutor tipus;
+    private String provincia;
 
-    @ManyToOne
-    @JoinColumn(name = "empresa_id")
-    private Empresa empresa;
+    private String web;
+
+    @Column(nullable = false)
+    private String sectorActivitat;
+
+    @OneToOne(mappedBy = "empresa")
+    private TutorEmpresa tutorEmpresa;
 }

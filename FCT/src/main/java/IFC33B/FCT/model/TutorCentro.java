@@ -1,35 +1,48 @@
-package IFC33B.FCT.Model;
+package IFC33B.FCT.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
-@Table(name = "cicles")
+@Table(name = "tutor_centro")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cicles {
+public class TutorCentro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Column(nullable = false)
-    private String nom;
+    private String nombre;
 
     @Column(nullable = false)
-    private String grau;
+    private String cognom;
 
     @Column(nullable = false)
-    private String familiaProfessional;
+    private String email;
 
     @Column(nullable = false)
-    private String codi;
+    private String telefon;
+
+    @Column(nullable = false)
+    private String carreg;
+
+    @OneToOne(mappedBy = "tutorCentre")
+    private Alumne alumne;
+
+    @OneToMany(mappedBy = "tutorCentre")
+    private List<Convenis> convenis;
 }

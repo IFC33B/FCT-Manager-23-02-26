@@ -18,7 +18,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    // inyecta JwtTokenUtil y CustomUserDetailsService
+    // inyecta JwtTokenUtil y CustomUserDetailsService.
     private final JwtTokenUtil jwtTokenUtil;
     private final CustomUserDetailsService userDetailsService;
 
