@@ -2,10 +2,10 @@ package IFC33B.FCT.dto;
 
 import java.time.LocalDate;
 
-import IFC33B.FCT.Model.Alumne;
-import IFC33B.FCT.Model.Empresa;
-import IFC33B.FCT.Model.TutorCentre;
-import IFC33B.FCT.Model.TutorEmpresa;
+import IFC33B.FCT.model.Alumne;
+import IFC33B.FCT.model.Empresa;
+import IFC33B.FCT.model.TutorCentre;
+import IFC33B.FCT.model.TutorEmpresa;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
@@ -19,7 +19,7 @@ public class ConveniRequest {
     @NotBlank
     private TutorEmpresa tutorEmpresa;
     @NotBlank
-    private TutorCentre tutorCentre;
+    private TutorCente tutorCentre;
     @NotBlank
     private String estat;
     @NotBlank

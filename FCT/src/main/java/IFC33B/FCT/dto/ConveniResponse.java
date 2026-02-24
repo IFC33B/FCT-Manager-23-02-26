@@ -2,10 +2,12 @@ package IFC33B.FCT.dto;
 
 import java.time.LocalDate;
 
-import IFC33B.FCT.Model.Alumne;
-import IFC33B.FCT.Model.Convenis;
-import IFC33B.FCT.Model.Empresa;
-import IFC33B.FCT.Model.EstatConveni;
+import IFC33B.FCT.model.Alumne;
+import IFC33B.FCT.model.Conveni;
+import IFC33B.FCT.model.Empresa;
+import IFC33B.FCT.model.EstatConveni;
+import IFC33B.FCT.model.TutorCentre;
+import IFC33B.FCT.model.TutorEmpresa;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 

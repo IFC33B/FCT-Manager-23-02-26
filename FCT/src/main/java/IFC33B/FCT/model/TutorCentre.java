@@ -44,5 +44,5 @@ public class TutorCentre {
     private Alumne alumne;
 
     @OneToMany(mappedBy = "tutorCentre")
-    private List<Convenis> convenis;
+    private List<Conveni> convenis;
 }
