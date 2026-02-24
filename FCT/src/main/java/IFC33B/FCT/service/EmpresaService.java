@@ -1,6 +1,6 @@
 package IFC33B.FCT.service;
 
-import IFC33B.FCT.Model.Empresa;
+import IFC33B.FCT.model.Empresa;
 import IFC33B.FCT.repository.EmpresaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 // TODO Check security implementation for JwtTokenUtils
 import IFC33B.FCT.security.JwtTokenUtil;
-import IFC33B.FCT.Model.Usuari;
+import IFC33B.FCT.model.Usuari;
 import IFC33B.FCT.dto.LoginRequest;
 import IFC33B.FCT.dto.LoginResponse;
 // TODO Check repository implementation for UserRepository
@@ -22,6 +22,8 @@ public class AuthService {
     private AuthenticationManager authenticationManager;
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
+    @Autowired
+    private UserRepository userRepository;
 
     // Servei de login
     public LoginResponse login(LoginRequest request) {
