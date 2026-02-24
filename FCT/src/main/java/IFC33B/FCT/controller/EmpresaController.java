@@ -1,11 +1,16 @@
 package IFC33B.FCT.controller;
 
+import IFC33B.FCT.Model.Empresa;
+import IFC33B.FCT.repository.EmpresaRepository;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
 
 import java.util.List;
+
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @RestController
 @RequestMapping
