@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.*;
 public class CicleController {
 
     @GetMapping
-    public ResponseEntity<List<Cicles>> getAllCicles()
+    public ResponseEntity<List<Cicle>> getAllCicles()
     {}
 
     @GetMapping("/{id}")
-    public ResponseEntity<Cicles>getCicles(@PathVariable int id)
+    public ResponseEntity<Cicle>getCicles(@PathVariable int id)
     {}
 
     @PostMapping
