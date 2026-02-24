@@ -2,7 +2,7 @@ package IFC33B.FCT.dto;
 
 import java.util.Optional;
 
-import IFC33B.FCT.Model.Empresa;
+import IFC33B.FCT.model.Empresa;
 import lombok.Data;
 
 @Data

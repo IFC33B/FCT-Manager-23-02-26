@@ -1,7 +1,7 @@
 package IFC33B.FCT.dto;
 
-import IFC33B.FCT.Model.Alumne;
-import IFC33B.FCT.Model.Cicle;
+import IFC33B.FCT.model.Alumne;
+import IFC33B.FCT.model.Cicle;
 import lombok.Data;
 
 @Data
