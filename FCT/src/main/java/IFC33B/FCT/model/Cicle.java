@@ -14,11 +14,11 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "cicles")
+@Table(name = "cicle")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class cicles {
+public class Cicle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
