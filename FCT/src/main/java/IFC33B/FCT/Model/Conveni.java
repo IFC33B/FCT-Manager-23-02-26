@@ -17,11 +17,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "convenis")
+@Table(name = "conveni")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Convenis {
+// TODO fix entity | Add a composite key between alumneId, tutorEmpresaId, anyAcademic
+// Add any academic | New field showing the academic year (24/25 or 24 or 2024 or 202425)
+public class Conveni {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
