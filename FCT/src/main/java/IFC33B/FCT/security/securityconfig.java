@@ -29,7 +29,7 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    // Expose AuthenticationManager for programmatic authentication use cases
+    // Expose AuthenticationManager for programmatic authentication use cases.
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
         return authConfig.getAuthenticationManager();

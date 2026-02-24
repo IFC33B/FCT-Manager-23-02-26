@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class JwtTokenUtil {
     
-    // Clave Secreta para tokens
+    // Clave Secreta para tokens.
     @Value("${jwt.secret}")
     private String secret;
     
