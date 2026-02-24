@@ -3,8 +3,7 @@ package IFC33B.FCT.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.security.Principal;
+import IFC33B.FCT.model.*;
 import java.util.List;
 
 @RestController
@@ -13,12 +12,12 @@ public class TutorsControllers {
 
 
     @GetMapping
-    public ResponseEntity<List<Tutors>> getAllTutors() {
+    public ResponseEntity<List<Tutor>> getAllTutors() {
 
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Tutors> getAllTutors(@RequestParam Long id) {
+    public ResponseEntity<Tutor> getAllTutors(@RequestParam Long id) {
     }
 
     @PostMapping
