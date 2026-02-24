@@ -1,65 +1,57 @@
-package IFC33B.FCT.Model;
+package IFC33B.FCT.model;
+
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
-@Table(name = "alumnes")
+@Table(name = "convenis")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Alumne {
+public class Conveni {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(nullable = false)
-    private String nom;
+    private LocalDate dataInici;
 
     @Column(nullable = false)
-    private String cognom;
+    private LocalDate dataFi;
 
     @Column(nullable = false)
-    private String dni;
+    private int hores;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String email;
+    private EstatConveni estat;
 
-    @Column(nullable = false)
-    private String telefon;
-
-    @Column(nullable = false)
-    private String poblacio;
-
-    @Column(nullable = false)
-    private String cursEscolar;
+    @Column(length = 500)
+    private String observacions;
 
     @ManyToOne
-    @JoinColumn(name = "cicle_id", nullable = false)
-    private Cicles cicle;
+    @JoinColumn(name = "alumne_id", nullable = false)
+    private Alumne alumne;
 
     @ManyToOne
-    @JoinColumn(name = "tutor_empresa_id")
+    @JoinColumn(name = "tutor_empresa_id", nullable = false)
     private TutorEmpresa tutorEmpresa;
 
-    @OneToOne
-    @JoinColumn(name = "tutor_centre_id")
+    @ManyToOne
+    @JoinColumn(name = "tutor_centre_id", nullable = false)
     private TutorCentro tutorCentre;
-
-    @OneToMany(mappedBy = "alumne")
-    private List<Convenis> convenis;
 }
