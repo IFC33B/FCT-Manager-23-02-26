@@ -3,6 +3,7 @@ package IFC33B.FCT.dto;
 import java.util.Optional;
 
 import IFC33B.FCT.Model.Empresa;
+import IFC33B.FCT.Model.Tutor;
 import lombok.Data;
 
 @Data
@@ -18,13 +19,13 @@ public class TutorResponse {
     private Optional<Empresa> empresa;
 
     // Constructor
-    public TutorResponse(String nom, String cognom, String email, String telefon, String carrec, String tipus, Optional<Empresa> empresa) {
-        this.setNom(nom);
-        this.setCognom(cognom);
-        this.setEmail(email);
-        this.setTelefon(telefon);
-        this.setCarrec(carrec);
-        this.setTipus(tipus);
-        this.setEmpresa(empresa);
+    public TutorResponse(Tutor tutor) {
+        this.setNom(tutor.getNombre());
+        this.setCognom(tutor.getCognom());
+        this.setEmail(tutor.getEmail());
+        this.setTelefon(tutor.getTelefon());
+        this.setCarrec(tutor.getCarreg());
+        this.setTipus(tutor.getTipus());
+        this.setEmpresa(tutor.getEmpresa());
     }
 }
