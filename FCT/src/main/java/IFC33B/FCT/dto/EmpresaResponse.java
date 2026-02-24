@@ -1,6 +1,6 @@
 package IFC33B.FCT.dto;
 
-import IFC33B.FCT.Model.Empresa;
+import IFC33B.FCT.model.Empresa;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
