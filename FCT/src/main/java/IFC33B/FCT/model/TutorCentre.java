@@ -19,7 +19,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TutorCentro {
+public class TutorCentre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
