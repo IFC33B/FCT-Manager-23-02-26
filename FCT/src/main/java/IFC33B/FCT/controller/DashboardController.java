@@ -13,6 +13,6 @@ public class DashboardController {
 
     @GetMapping("/stats")
     public int getAllStats() {
-        return
+        return 0;
     }
 }
