@@ -2,11 +2,9 @@ package IFC33B.FCT.controller;
 
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -19,26 +17,25 @@ public class TutorsControllers {
     @GetMapping
     public ResponseEntity<List<Tutors>> getAllTutors() {
 
-        List<Tutors> listaTutores = tutorsService.obtenerTutores();
-        return ResponseEntity.ok(listaTutores);
     }
 
-    @GetMapping
-    public ResponseEntity<Tutors> getAllTutors(int id) {
-
-        Tutors tutor = tutorsRepository.getById(id);
-        return ResponseEntity.ok(tutor);
+    @GetMapping("/{id}")
+    public ResponseEntity<Tutors> getAllTutors(@RequestParam Long id) {
     }
 
     @PostMapping
-    public ResponseEntity<Tutor>createTutor(Tutor tutor){
-
-        Tutor newTutor = tutor;
-        return ResponseEntity.ok(newTutor);
+    public ResponseEntity<TutorResponse> createTutor(Tutor tutor) {
 
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<TutorResponse> editarTutor(@RequestParam Long id, TutorRequest tutorRequest) {
 
+    }
 
+    @PutMapping("/{id}/delete")
+    public ResponseEntity<Tutor> cancelarCita(@RequestParam Long id) {
+
+    }
 
 }
