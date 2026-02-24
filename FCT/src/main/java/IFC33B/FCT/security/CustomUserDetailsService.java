@@ -1,7 +1,7 @@
 package IFC33B.FCT.security;
 
-import cat.xaviersastre.jwtserver.model.User;
-import cat.xaviersastre.jwtserver.repository.UserRepository;
+import IFC33B.FCT.security.model.Usuari;
+import IFC33B.FCT.security.repository.UsuariRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,21 +16,23 @@ import java.util.Collections;
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
 
-    private final UserRepository userRepository;
+    // base de datos de los usuarios
+    private final UsuariRepository useriRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
+        Usuari usuari = useriRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuari not trobat " + username));
 
+        // devuelve un objeto UserDetails con el nombre de usuario, contraseña
+        // y los roles del usuario para que Spring Security pueda realizar la autenticación y autorización.
         return org.springframework.security.core.userdetails.User
-                .withUsername(user.getUsername())
-                .password(user.getPassword())
-                .authorities(Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + user.getRole())))
+                .withUsername(usuari.getUsername())
+                .password(usuari.getPassword())
+                .authorities(Collections.singletonList(new SimpleGrantedAuthority("ROLS_" + usuari.getRols())))
                 .accountExpired(false)
                 .accountLocked(false)
                 .credentialsExpired(false)
-                .disabled(!user.isEnabled())
                 .build();
     }
 }
