@@ -15,11 +15,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Usuari {
 
+public class Usuari {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Column(nullable = false)
     private String username;
@@ -31,5 +31,5 @@ public class Usuari {
     private String nom;
 
     @Column(nullable = false)
-    private String rol;
+    private String rols;   
 }

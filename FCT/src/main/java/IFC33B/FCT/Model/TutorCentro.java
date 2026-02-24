@@ -5,8 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -17,24 +15,21 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "alumnes")
+@Table(name = "tutor_centro")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Alumne {
+public class TutorCentro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(nullable = false)
-    private String nom;
+    private String nombre;
 
     @Column(nullable = false)
     private String cognom;
-
-    @Column(nullable = false)
-    private String dni;
 
     @Column(nullable = false)
     private String email;
@@ -43,23 +38,11 @@ public class Alumne {
     private String telefon;
 
     @Column(nullable = false)
-    private String poblacio;
+    private String carreg;
 
-    @Column(nullable = false)
-    private String cursEscolar;
+    @OneToOne(mappedBy = "tutorCentre")
+    private Alumne alumne;
 
-    @ManyToOne
-    @JoinColumn(name = "cicle_id", nullable = false)
-    private Cicles cicle;
-
-    @ManyToOne
-    @JoinColumn(name = "tutor_empresa_id")
-    private TutorEmpresa tutorEmpresa;
-
-    @OneToOne
-    @JoinColumn(name = "tutor_centre_id")
-    private TutorCentro tutorCentre;
-
-    @OneToMany(mappedBy = "alumne")
+    @OneToMany(mappedBy = "tutorCentre")
     private List<Convenis> convenis;
 }
