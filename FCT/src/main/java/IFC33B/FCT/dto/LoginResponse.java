@@ -1,5 +1,8 @@
 package IFC33B.FCT.dto;
 
+import lombok.Data;
+
+@Data
 public class LoginResponse {
     // Atributs
     private String token;

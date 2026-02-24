@@ -1,4 +1,4 @@
-package IFC33B.FCT.Model;
+package IFC33B.FCT.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

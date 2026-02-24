@@ -1,10 +1,12 @@
-package IFC33B.FCT.Model;
+package IFC33B.FCT.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -15,21 +17,24 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "tutor_centro")
+@Table(name = "alumnes")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TutorCentro {
+public class Alumne {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(nullable = false)
-    private String nombre;
+    private String nom;
 
     @Column(nullable = false)
     private String cognom;
+
+    @Column(nullable = false)
+    private String dni;
 
     @Column(nullable = false)
     private String email;
@@ -38,11 +43,23 @@ public class TutorCentro {
     private String telefon;
 
     @Column(nullable = false)
-    private String carreg;
+    private String poblacio;
 
-    @OneToOne(mappedBy = "tutorCentre")
-    private Alumne alumne;
+    @Column(nullable = false)
+    private String cursEscolar;
 
-    @OneToMany(mappedBy = "tutorCentre")
+    @ManyToOne
+    @JoinColumn(name = "cicle_id", nullable = false)
+    private Cicle cicle;
+
+    @ManyToOne
+    @JoinColumn(name = "tutor_empresa_id")
+    private TutorEmpresa tutorEmpresa;
+
+    @OneToOne
+    @JoinColumn(name = "tutor_centre_id")
+    private TutorCentre tutorCentre;
+
+    @OneToMany(mappedBy = "alumne")
     private List<Convenis> convenis;
 }

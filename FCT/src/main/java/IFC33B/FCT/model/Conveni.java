@@ -1,4 +1,4 @@
-package IFC33B.FCT.Model;
+package IFC33B.FCT.model;
 
 import java.time.LocalDate;
 
@@ -23,6 +23,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 // TODO fix entity | Add a composite key between alumneId, tutorEmpresaId, anyAcademic
 // Add any academic | New field showing the academic year (24/25 or 24 or 2024 or 202425)
+
 public class Conveni {
 
     @Id
@@ -55,5 +56,5 @@ public class Conveni {
 
     @ManyToOne
     @JoinColumn(name = "tutor_centre_id", nullable = false)
-    private TutorCentro tutorCentre;
+    private TutorCentre tutorCentre;
 }

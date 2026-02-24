@@ -1,41 +1,46 @@
-package IFC33B.FCT.Model;
+package IFC33B.FCT.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
-@Table(name = "cicles")
+@Table(name = "dashboard")
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cicles {
+public class Dashboard {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(nullable = false)
-    private String nom;
+    private Integer totalAlumnes;
 
     @Column(nullable = false)
-    private String grau;
+    private Integer totalEmpreses;
 
     @Column(nullable = false)
-    private String familiaProfessional;
+    private Integer totalTutors;
 
     @Column(nullable = false)
-    private String codi;
+    private Integer totalCicles;
 
-    @OneToMany(mappedBy = "cicle")
-    private List<Alumne> alumnes;
+    @Column(nullable = false)
+    private Integer convenisPendents;
+
+    @Column(nullable = false)
+    private Integer convenisActius;
+
+    @Column(nullable = false)
+    private Integer convenisFinalitzats;
 }

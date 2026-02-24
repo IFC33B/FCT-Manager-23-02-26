@@ -1,4 +1,4 @@
-package cat.xaviersastre.jwtserver.security;
+package IFC33B.FCT.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

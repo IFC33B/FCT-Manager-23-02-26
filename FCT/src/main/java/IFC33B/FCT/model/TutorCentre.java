@@ -1,56 +1,48 @@
-package IFC33B.FCT.Model;
+package IFC33B.FCT.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
-@Table(name = "empreses")
+@Table(name = "tutor_centro")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Empresa {
+public class TutorCentre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(nullable = false)
-    private String nom;
+    private String nombre;
 
     @Column(nullable = false)
-    private String cif;
-
-    @Column(nullable = false)
-    private String poblacio;
-
-    @Column(nullable = false)
-    private int telefon;
+    private String cognom;
 
     @Column(nullable = false)
     private String email;
 
     @Column(nullable = false)
-    private String direccio;
+    private String telefon;
 
     @Column(nullable = false)
-    private String codiPostal;
+    private String carreg;
 
-    @Column(nullable = false)
-    private String provincia;
+    @OneToOne(mappedBy = "tutorCentre")
+    private Alumne alumne;
 
-    private String web;
-
-    @Column(nullable = false)
-    private String sectorActivitat;
-
-    @OneToOne(mappedBy = "empresa")
-    private TutorEmpresa tutorEmpresa;
+    @OneToMany(mappedBy = "tutorCentre")
+    private List<Conveni> convenis;
 }
