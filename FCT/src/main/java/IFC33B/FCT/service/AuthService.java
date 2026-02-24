@@ -32,8 +32,8 @@ public class AuthService {
         String token = jwtTokenUtil.generateToken(userDetails);
 
         // TODO check userRepository implementation
-        Usuari usuari = userRepository.findByUsuariNom(request.getUsername())
-                // TODO implement exception UsuariNomNotFoundException
+        Usuari usuari = userRepository.findByUsername(request.getUsername())
+                // TODO implement exception UsernameNotFoundException
                 .orElseThrow(() -> new RuntimeException(request.getUsername()));
 
         return new LoginResponse(token, usuari.getUsername(), usuari.getNom(), usuari.getRols());
