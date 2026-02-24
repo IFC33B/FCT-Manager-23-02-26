@@ -1,5 +1,6 @@
 package IFC33B.FCT.dto;
 
+import IFC33B.FCT.model.Dashboard;
 import lombok.Data;
 
 @Data
