@@ -1,13 +1,12 @@
 package IFC33B.FCT.controller;
 
-import IFC33B.FCT.model.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/api/cicles")
-public class CiclesController {
+public class CicleController {
 
     @GetMapping
     public ResponseEntity<List<Cicles>> getAllCicles()
