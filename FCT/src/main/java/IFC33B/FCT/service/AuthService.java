@@ -37,7 +37,5 @@ public class AuthService {
                 .orElseThrow(() -> new RuntimeException(request.getUsername()));
 
         return new LoginResponse(token, usuari.getUsername(), usuari.getNom(), usuari.getRols());
-
     }
-
 }
