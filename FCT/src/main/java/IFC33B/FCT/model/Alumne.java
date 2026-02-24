@@ -58,7 +58,7 @@ public class Alumne {
 
     @OneToOne
     @JoinColumn(name = "tutor_centre_id")
-    private TutorCentro tutorCentre;
+    private TutorCentre tutorCentre;
 
     @OneToMany(mappedBy = "alumne")
     private List<Convenis> convenis;
