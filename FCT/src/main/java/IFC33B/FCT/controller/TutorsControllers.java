@@ -8,11 +8,9 @@ import java.security.Principal;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("api/tutors")
 public class TutorsControllers {
 
-    private TutorsService tutorsService;
-    private TutorsRepository tutorsRepository;
 
     @GetMapping
     public ResponseEntity<List<Tutors>> getAllTutors() {
