@@ -1,4 +1,4 @@
-package cat.xaviersastre.jwtserver.security;
+package IFC33B.FCT.security;
 
 import cat.xaviersastre.jwtserver.model.User;
 import cat.xaviersastre.jwtserver.repository.UserRepository;

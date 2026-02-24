@@ -53,5 +53,5 @@ public class Conveni {
 
     @ManyToOne
     @JoinColumn(name = "tutor_centre_id", nullable = false)
-    private TutorCentro tutorCentre;
+    private TutorCentre tutorCentre;
 }

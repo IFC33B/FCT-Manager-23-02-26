@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import IFC33B.FCT.Model.Convenis;
+import IFC33B.FCT.model.Conveni;
 import IFC33B.FCT.repository.ConveniRepository;
 
 @RestController
